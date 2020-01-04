@@ -1,0 +1,68 @@
+
+<html>
+
+<head>
+
+<style>
+
+html {
+  background-color: black;
+}
+
+div {
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  border: 0px;
+  background-color: white;
+  float: left;
+}
+
+</style>
+
+<head>
+
+<body>
+
+
+<script>
+
+(function() {
+  boot();
+})();
+
+function boot() {
+  let body = document.getElementsByTagName("body")[0];
+  let divs = [];
+  
+  for(let i = 0; i < 1000; i++) {
+    let div = document.createElement("div");
+    divs.push(div);
+    body.appendChild(div);
+  }
+
+  setInterval(function() {
+    for(let i = 0; i < divs.length; i++) {
+      let div = divs[i];
+
+      let br = parseInt(div.style.borderRadius.split("p")[0]); // get 34 from "34px"
+
+      if (Number.isNaN(br)) {
+        br = 50;
+      }
+
+      let a = br + 1;
+      if (a > 50) {
+        a = 0;
+      }
+      div.style.borderRadius = a + "px";
+    }
+  }, 100);
+}
+
+
+</script>
+
+</body>
+
+</html>
